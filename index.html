@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bookmarklets</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+</head>
+<body style="padding: 40px 0;">
+	<div class="container">
+		<h1>Bookmarklets</h1>
+		<p class="lead">Drag any of the buttons below to your <em>Bookmarks bar</em></p>
+
+		<br><h4><a 
+			href="javascript:(function(){var host = %27http%3A//tfk-qa.time.com/%27;if(location.hostname === %27tfk-qa.time.com%27){location.href = location.href.replace(%27tfk-qa.time.com%27%2C %27localhost%3A3000%27);return;}var path = location.pathname;if((/(ew.com%7Cpeople.com%7Cinstyle.com%7Cextracrispy.com)/).test(location.hostname)){path = %27/%27 %2B utag_data.content_id;}location.href = (host %2B location.hostname.replace(/(www%5C.%7C%5C.com)/g%2C %27%27) %2B path);})();" 
+			class="btn btn-primary"
+		>Reactify!</a></h4>
+		<p>Turns any pronto-ready page into a Newsgroup Editorial Article page.</p>
+
+		<br><h4><a 
+			href="javascript:(function(){var time = (/time%5C.com%5C/(%5Cd%2B)%5C/[a-zA-Z0-9]%2B[-a-zA-Z0-9]%2A/).exec(location.href);if(time) location.href = %27http%3A//time.com/wp-json/ti-api/v1/posts/%27 %2B time[1] %2B %27?_embed%27;var fortune = (/fortune%5C.com%5C/%5Cd%2B%5C/%5Cd%2B%5C/%5Cd%2B%5C/([a-zA-Z0-9]%2B[-a-zA-Z0-9]%2A)/).exec(location.href);if(fortune) location.href = %27http%3A//fortune.com/wp-json/ti-api/v1/posts/%27 %2B fortune[1] %2B %27?_embed%27;if((/(realsimple.com%7Ctravelandleisure.com%7Ccoastalliving.com)/).test(location.hostname)){location.href %2B= %27/pronto-json%27;}if((/(si.com)/).test(location.hostname)){location.href = %27https%3A//time%3Azdne37cdmf4j%40content.api.si.com/v2/documents?format=pronto%26path=%27 %2B location.pathname;}if((/(ew.com%7Cpeople.com)/).test(location.hostname)){location.href = %27http%3A//%27 %2B location.hostname %2B %27/wp-json/pronto/v1/posts/%27 %2B utag_data.content_id;}if((/(instyle.com)/).test(location.hostname)){location.href = %27http%3A//www.instyle.com/node/%27 %2B utag_data.content_id %2B %27/pronto-json%27;}if((/(extracrispy.com)/).test(location.hostname)){location.href = %27http%3A//extra-crispy-cms-prod.us-west-2.elasticbeanstalk.com/v2/article/%27 %2B utag_data.content_id %2B %27/json%27;}if(location.hostname === %27localhost%27) location.href = (%27http%3A//localhost%3A3000/api/posts%27 %2B location.pathname).replace(/%5C/%24/%2C %27%27);if(location.hostname === %27tfk-qa.time.com%27) location.href = (%27http%3A//tfk-qa.time.com/api/posts%27 %2B location.pathname).replace(/%5C/%24/%2C %27%27);})();" 
+			class="btn btn-primary"
+		>Endpoint</a></h4>
+		<p>Shows the current page's API endpoint used to reder it.</p>
+	</div>
+</body>
+</html>
