@@ -4,31 +4,27 @@
 	<meta charset="UTF-8">
 	<title>Bookmarklets</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css">
 </head>
 <body style="padding: 40px 0;">
 	<div class="container">
 		<h1>Bookmarklets</h1>
 		<p class="lead">Drag any of the buttons below to your <em>Bookmarks bar</em>.</p>
 
-		<br><hr><br>
-		<h2>General</h2>
-		<p>Simple tools to solve everyday annoyances.</p>
 
 
-
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:(function(){const%20url%20=%20%27http%3A//localhost%3A9229/json%27;if(location.href%20!==%20url)%20return%20location.href%20=%20url;const%20overlay%20=%20document.createElement(%27div%27);overlay.setAttribute(%27style%27%2C%20%60position%3Aabsolute;z-index%3A99999;top%3A0;left%3A0;right%3A0;bottom%3A0;background%3Argba(0%2C0%2C0%2C0.7);color%3A%23ddd;font%3Anormal%2013px%20sans-serif;padding%3A%2010px;%60);const%20address%20=%20document.createElement(%27input%27);address.setAttribute(%27style%27%2C%20%60font%3Anormal%20200px%20sans-serif;border%3Anone;%20background%3A%23000;padding%3A0;%20color%3A%20%23eee;width%3A100%25;%60);overlay.appendChild(address);fetch(url).then(res%20=%3E%20res.json()).then(json%20=%3E%20{address.value%20=%20json[0].devtoolsFrontendUrl;document.body.appendChild(overlay);address.focus();address.setSelectionRange(0%2C%20address.value.length);}).catch(err%20=%3E%20console.error(err));})();" 
+		<br><h4><a class="btn btn-primary"
+			href="javascript:((w,d)=>{const e=d.createElement('iframe');e.onload=(()=>{const o=Object.keys(e.contentWindow),n=Object.keys(w).filter(e=>-1===o.indexOf(e));e.remove(),console.log(n.reduce((e,o)=>({...e,[o]:w[o]}),{}))}),e.src='about:blank',d.body.appendChild(e)})(window,document)"
 		>
-			Node Devtools</a></h4>
+			Added Globals</a></h4>
 		<p>
-			Gets the current <a href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27">Node devtools</a> link to avoid coping and pasting it from the console. Chrome prevents js to redirect to <code>chrome://</code> urls, so the devtools link should be dragged into the address bar.
+			Prints all the non-standard globals attached to the <code>window</code>.
 		</p>
 
 
 
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:(()=%3E{const%20size%20=%20250;const%20padding%20=%2010;const%20data%20=%20document.location.href;const%20endpoint%20=%20%60https%3A//api.qrserver.com/v1/create-qr-code/?size=%24{%20size%20}x%24{%20size%20}%26data=%24{%20escape(data)%20}%60;const%20features%20=%20[%60innerWidth=%24{%20size%20%2B%20padding%20%2A%202%20}%60%2C%60innerHeight=%24{%20size%20%2B%20padding%20%2A%202%20}%60%2C%60top=%24{%20window.screenTop%20%2B%2070%20}%60%2C%60left=%24{%20window.screenLeft%20%2B%2030%20}%60%2C%27menubar=no%27%2C%27location=no%27%2C%27resizable=no%27%2C%27scrollbars=no%27%2C%27status=no%27%2C];const%20newWin%20=%20window.open(endpoint%2C%20%27qr%27%2C%20features.join(%27%2C%27));})();" 
+		<br><h4><a class="btn btn-primary"
+			href="javascript:(()=%3E{const%20size%20=%20250;const%20padding%20=%2010;const%20data%20=%20document.location.href;const%20endpoint%20=%20%60https%3A//api.qrserver.com/v1/create-qr-code/?size=%24{%20size%20}x%24{%20size%20}%26data=%24{%20escape(data)%20}%60;const%20features%20=%20[%60innerWidth=%24{%20size%20%2B%20padding%20%2A%202%20}%60%2C%60innerHeight=%24{%20size%20%2B%20padding%20%2A%202%20}%60%2C%60top=%24{%20window.screenTop%20%2B%2070%20}%60%2C%60left=%24{%20window.screenLeft%20%2B%2030%20}%60%2C%27menubar=no%27%2C%27location=no%27%2C%27resizable=no%27%2C%27scrollbars=no%27%2C%27status=no%27%2C];const%20newWin%20=%20window.open(endpoint%2C%20%27qr%27%2C%20features.join(%27%2C%27));})();"
 		>
 			QR Address</a></h4>
 		<p>
@@ -37,70 +33,34 @@
 
 
 
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:(()%20=%3E%20{const%20mediaurl%20=%20prompt(%27Enter%20your%20PDF%20url%27);if(mediaUrl){const%20nw%20=%20window.open();if(nw){let%20embed%20=%20%60%3Cembed%20src=%22%24{%20mediaurl%20}%22%20width=%22100%25%22%20height=%22100%25%22%20/%3E%60;const%20ext%20=%20mediaUrl.split(/%5C%23%7C%5C?/)[0].split(%27.%27).pop().trim();if((/%5E(jpe?g%7Cgif%7Cpng%7Csvg)%24/).test(ext))%20embed%20=%20%60%3Cimg%20src=%22%24{%20mediaurl%20}%22%20/%3E%60;if((/%5E(mp4%7Cmov%7Cwebm%7Cavi)%24/).test(ext))%20embed%20=%20%60%3Cvideo%20src=%22%24{%20mediaurl%20}%22%20controls%20/%3E%60;if((/%5E(mp3%7Cwav%7Cogg%7Cflac)%24/).test(ext))%20embed%20=%20%60%3Caudio%20src=%22%24{%20mediaurl%20}%22%20controls%20/%3E%60;nw.document.body.innerHTML%20=%20%60%3Cstyle%3Ebody{background%3A%23000;margin%3A0;padding%3A0;}%3C/style%3E%24{%20embed%20}%60;nw.focus();}}})();" 
+		<br><h4><a class="btn btn-primary"
+			href="javascript:(()%20=%3E%20{const%20mediaurl%20=%20prompt(%27Enter%20your%20PDF%20url%27);if(mediaUrl){const%20nw%20=%20window.open();if(nw){let%20embed%20=%20%60%3Cembed%20src=%22%24{%20mediaurl%20}%22%20width=%22100%25%22%20height=%22100%25%22%20/%3E%60;const%20ext%20=%20mediaUrl.split(/%5C%23%7C%5C?/)[0].split(%27.%27).pop().trim();if((/%5E(jpe?g%7Cgif%7Cpng%7Csvg)%24/).test(ext))%20embed%20=%20%60%3Cimg%20src=%22%24{%20mediaurl%20}%22%20/%3E%60;if((/%5E(mp4%7Cmov%7Cwebm%7Cavi)%24/).test(ext))%20embed%20=%20%60%3Cvideo%20src=%22%24{%20mediaurl%20}%22%20controls%20/%3E%60;if((/%5E(mp3%7Cwav%7Cogg%7Cflac)%24/).test(ext))%20embed%20=%20%60%3Caudio%20src=%22%24{%20mediaurl%20}%22%20controls%20/%3E%60;nw.document.body.innerHTML%20=%20%60%3Cstyle%3Ebody{background%3A%23000;margin%3A0;padding%3A0;}%3C/style%3E%24{%20embed%20}%60;nw.focus();}}})();"
 		>
 			In-browser Media</a></h4>
 		<p>
-			Opens the specified media, in browser, to avoid downloading it.
+			Opens the specified media, in-browser, to avoid downloading it.
 		</p>
 
 
 
-		<br><hr><br>
-		<h2>Time Inc.</h2>
-		<p>Some, if not most of these bookmarklets are irrelevant now.</p>
-
-
-
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:(()=%3E{%24%20=%20(s%2C%20c)%20=%3E%20{%20return%20(c%20%7C%7C%20document).querySelector(s);%20};%24(%27head%27).innerHTML%20%2B=%20%27%3Cmeta%20name=%22viewport%22%20content=%22width=device-width%2C%20initial-scale=1.0%2C%20maximum-scale=1.0%2C%20user-scalable=no%22%20/%3E%27;%24(%27link%27).remove();const%20s%20=%20%60body{%20margin%3A0;%20padding%3A40px%2020px;%20font-family%3Asans-serif;%20}input{%20font-size%3A%2030px;%20font-weight%3A%20bold;%20border%3A%201px%20solid%20%23ccc;%20width%3A%20100%25;%20padding%3A%2016px;%20border-radius%3A%204px;%20box-sizing%3A%20border-box;%20}input[type=text]{%20letter-spacing%3A%200.35em;%20margin-bottom%3A%2020px;%20box-shadow%3A%20inset%200%202px%204px%200%20%23eee;%20}input[type=submit]{%20background%3A%20%230275d8;%20color%3A%20%23fff;%20-webkit-appearance%3A%20none;%20}label{color%3A%20%23888;}%23registeredhdr%2C%20%23logo{%20display%3A%20none;%20}%60;%24(%27style%27).innerHTML%20=%20s;const%20pd%20=%20(n)%20=%3E%20%6000%24{n}%60.substr(-2%2C2);const%20d%20=%20new%20Date();const%20u%20=%20%24(%27input[name=user]%27);const%20p%20=%20%24(%27input[name=password]%27);const%20parsePwd%20=%20()%20=%3E%20{const%20v%20=%20p.value;const%20m%20=%20v.match(/%5C%7C%5Cs%60([a-z0-9]{6})/);const%20r%20=%20m%20?%20m[1]%20%3A%20v;p.value%20=%20r.toLowerCase().trim();};u.value=%60tig%24{pd(d.getMonth()%2B1)}%24{pd(d.getDate())}%24{pd(d.getFullYear())}%60;p.type=%27text%27;%20p.value=%27%27;%20p.focus();p.addEventListener(%27change%27%2C%20parsePwd%2C%20false);p.addEventListener(%27keyup%27%2C%20parsePwd%2C%20false);setInterval(parsePwd%2C%201000);})();" 
+		<br><h4><a class="btn btn-primary"
+			href="javascript:function%20getFaIcon(node%20=%20%240%20%7C%7C%20document.body){const%20svg%20=%20((node%20%26%26%20node.tagName%20===%20%27svg%27)%20?%20node%20%3A%20document.querySelector(%27svg%27%2C%20node));const%20icon%20=%20svg.cloneNode(true);const%20name%20=%20icon.dataset.icon.split(%27-%27).map(w%20=%3E%20w[0].toUpperCase()%20%2B%20w.substring(1)).join(%27%27)%20%2B%20%27Icon%27;const%20className%20=%20%27icon-%27%20%2B%20icon.dataset.icon;const%20h%20=%2016;const%20w%20=%20Math.round(icon.viewBox.baseVal.width%20/%20icon.viewBox.baseVal.height%20%2A%20h);const%20attrBucket%20=%20{}%2C%20validAttrs%20=%20[%27viewBox%27%2C%20%27xmlns%27%2C%20%27aria-hidden%27];icon.getAttributeNames().forEach(attr%20=%3E%20{if%20(validAttrs.includes(attr))%20attrBucket[attr]%20=%20icon.getAttribute(attr);icon.removeAttribute(attr);});[...icon.querySelectorAll(%27path%27)].forEach(p%20=%3E%20p.removeAttribute(%27class%27));icon.setAttribute(%27height%27%2C%20h);icon.setAttribute(%27width%27%2C%20w);console.log(attrBucket);validAttrs.forEach(attr%20=%3E%20icon.setAttribute(attr%2C%20attrBucket[attr]));const%20component%20=%20%60export%20const%20%24{name}%20=%20({height%20=%20%24{h}%2C%20width%20=%20%24{w}})%20=%3E%20(%5Cn%20%3Csvg%20height={height}%20width={width}%20className=%22%24{className}%22%20viewBox=%22%24{icon.getAttribute(%27viewBox%27)}%22%20aria-hidden=%22true%22%20xmlns=%22http%3A//www.w3.org/2000/svg%22%3E%24{icon.innerHTML}%3C/svg%3E%5Cn);%60;return%20{node%3A%20icon%2C%20component%2C%20xml%3A%20%27%3C?xml%20version=%221.0%22%20encoding=%22UTF-8%22?%3E%27};}(()%20=%3E%20{const%20icon%20=%20getFaIcon(document.querySelector(%27.fa-9x%27));console.log(icon.xml);console.log(icon.node);console.log(icon.component);})();"
 		>
-			Time Inc Captive Portal</a></h4>
+			Get FA Icon</a></h4>
 		<p>
-			Automatically fills up the username (tigMMDDYY) on the captive portal of the Time Inc Guest Wifi and parses the copied password from Slack #general.
+			Extracts the current FontAwesome icon as SVG and React component (in the console).
 		</p>
 
 
 
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:(()=%3E{window.victmo%20=%20window.victmo%20%7C%7C%20{};const%20setValue%20=%20(s%2Cv)%20=%3E%20{const%20els%20=%20[...document.querySelectorAll(s)];els.filter(el%20=%3E%20typeof%20el.value%20===%20%27string%27).forEach(el%20=%3E%20el.value%20=%20v);};const%20autofill%20=%20()%20=%3E%20{setValue(%27select[id%24=_CapitalProjectName_]%27%2C%20%27APE-BI-Unified%20Template%27);setValue(%27select[id%24=_KTLOAdmin%5C%5C(ifapplicable%5C%5C)_]%27%2C%20%27Project%27);setValue(%27select[id%24=_CapitalActivity_]%27%2C%20%27Design%20and%20Development%20-%20CAPITAL%20%27);};if(window.victmo.tempoIntervalId)%20clearInterval(window.victmo.tempoIntervalId);window.victmo.tempoIntervalId%20=%20setInterval(autofill%2C%203000);})();" 
+		<br><h4><a class="btn btn-primary"
+			href="javascript:(function(){const%20url%20=%20%27http%3A//localhost%3A9229/json%27;if(location.href%20!==%20url)%20return%20location.href%20=%20url;const%20overlay%20=%20document.createElement(%27div%27);overlay.setAttribute(%27style%27%2C%20%60position%3Aabsolute;z-index%3A99999;top%3A0;left%3A0;right%3A0;bottom%3A0;background%3Argba(0%2C0%2C0%2C0.7);color%3A%23ddd;font%3Anormal%2013px%20sans-serif;padding%3A%2010px;%60);const%20address%20=%20document.createElement(%27input%27);address.setAttribute(%27style%27%2C%20%60font%3Anormal%20200px%20sans-serif;border%3Anone;%20background%3A%23000;padding%3A0;%20color%3A%20%23eee;width%3A100%25;%60);overlay.appendChild(address);fetch(url).then(res%20=%3E%20res.json()).then(json%20=%3E%20{address.value%20=%20json[0].devtoolsFrontendUrl;document.body.appendChild(overlay);address.focus();address.setSelectionRange(0%2C%20address.value.length);}).catch(err%20=%3E%20console.error(err));})();"
 		>
-			NG Tempo Autofill</a></h4>
+			Node Devtools</a></h4>
 		<p>
-			Automatically selects <em>Capital Project Name</em>, <em>KTLO/Admin/Project</em> and <em>Capital Activity</em> for you.
+			Gets the current <a href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27">Node devtools</a> link to avoid coping and pasting it from the console. Chrome prevents js to redirect to <code>chrome://</code> urls, so the devtools link should be dragged into the address bar.
 		</p>
 
-
-
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:function%20Gradebook(classId)%20{self%20=%20this;self.classId%20=%20classId%20%7C%7C%20((/class=(.%2B?)%5C%26/).exec(document.querySelector(%27.student-list--students%20li%20a%27).href))[1];self.assignments%20=%20[];getAssignments(self.classId%2C%20()%20=%3E%20console.log(%27Assignments%20loaded!%27));function%20getAssignments(classId%2C%20cb)%20{const%20endpoint%20=%20%60/assignments/getAll?type=classes%26typeId=%24{%20classId%20}%60;console.info(%60Fetching%20%24{%20endpoint%20}%60);fetch(endpoint%2C%20{credentials%3A%20%27include%27}).then(res%20=%3E%20{return%20res.json();}).then(assignments%20=%3E%20{self.assignments%20=%20assignments.map(a%20=%3E%20{const%20assignment%20=%20{id%3A%20a.id%2CarticleId%3A%20a.classAssignmentInfo.message%2CarticleTitle%3A%20a.classAssignmentInfo.tasks[0].metadata.articleTitle%2ChasAlternateLexile%3A%20a.classAssignmentInfo.tasks[0].metadata.hasAlternateLexile%2Curl%3A%20a.classAssignmentInfo.tasks[0].uri};assignment.unassign%20=%20()%20=%3E%20{getAssignmentStudents(self.classId%2C%20assignment.articleId%2C%20(err%2C%20studentIds)%20=%3E%20{if(err)%20return%20console.error(%27Could%20not%20unassign%20(unable%20to%20get%20student%20ids)%27);unassignAssignment({articleId%3A%20assignment.articleId%2CassignmentId%3A%20assignment.id%2CarticleTitle%3A%20assignment.articleTitle%2CclassId%3A%20classId%2ChasAlternateLexile%3A%20assignment.hasAlternateLexile%2CstudentId%3A%20studentIds.join(%27%2C%27)%2CisComplete%3A%20studentIds.map(s%20=%3E%20%27%27).join(%27%2C%27)%2CalternateLexile%3A%20%27%27%2Cmodal%3A%20%271%27}%2C%20()%20=%3E%20{if(err)%20return%20console.error(err);return%20console.log(%60Unassigned%20%22%24{%20assignment.articleTitle%20}%22%60);});});};assignment.reassign%20=%20()%20=%3E%20{getAssignmentStudents(self.classId%2C%20assignment.articleId%2C%20(err%2C%20studentIds)%20=%3E%20{if(err)%20return%20console.error(%27Could%20not%20reassign%20(unable%20to%20get%20student%20ids)%27);assignAssignment({articleId%3A%20assignment.articleId%2CassignmentId%3A%20%27%27%2CarticleTitle%3A%20assignment.articleTitle%2CclassId%3A%20classId%2ChasAlternateLexile%3A%20assignment.hasAlternateLexile%2CstudentId%3A%20studentIds.join(%27%2C%27)%2CisComplete%3A%20studentIds.map(s%20=%3E%20%27%27).join(%27%2C%27)%2CalternateLexile%3A%20%27%27%2Cmodal%3A%20%271%27}%2C%20()%20=%3E%20{if(err)%20return%20console.error(err);return%20console.log(%60Reassigned%20%22%24{%20assignment.articleTitle%20}%22%60);});});};return%20assignment;});console.info(%60Loaded%20%24{%20self.assignments.length%20}%20assignment%24{%20self.assignments.length%20===%201%20?%20%27%27%20%3A%20%27s%27%20}%60);}).catch(err%20=%3E%20console.error);}function%20getAssignmentStudents(classId%2C%20articleId%2C%20cb)%20{const%20endpoint%20=%20%60/dashboard/assignment?modal=1%26class=%24{%20classId%20}%26article=%24{%20articleId%20}%60;console.info(%60Fetching%20%24{%20endpoint%20}%60);fetch(endpoint%2C%20{credentials%3A%20%27include%27}).then(res%20=%3E%20res.text()).then(text%20=%3E%20{const%20ids%20=%20[];text.replace(/%5C(([A-Z]{2}%5Cd{4})%5C)/g%2C%20(a%2C%20b)%20=%3E%20ids.push(b));return%20cb(null%2C%20ids)}).catch(err%20=%3E%20cb(err));}function%20assignAssignment(data%2C%20cb)%20{const%20endpoint%20=%20%27/assignments/class/add%27;const%20form%20=%20new%20URLSearchParams();Object.keys(data).forEach(key%20=%3E%20form.append(key%2C%20data[key]));console.info(%60Fetching%20%24{%20endpoint%20}%60);fetch(endpoint%2C%20{credentials%3A%20%27include%27%2Cmethod%3A%20%27POST%27%2Cbody%3A%20form}).then(res%20=%3E%20{if(!res.ok)%20cb(%27Could%20not%20assign%27);return%20cb(null%2C%20true)}).catch(err%20=%3E%20cb(err));}function%20unassignAssignment(data%2C%20cb)%20{const%20endpoint%20=%20%27/assignments/class/remove%27;const%20form%20=%20new%20URLSearchParams();Object.keys(data).forEach(key%20=%3E%20form.append(key%2C%20data[key]));console.info(%60Fetching%20%24{%20endpoint%20}%60);fetch(endpoint%2C%20{credentials%3A%20%27include%27%2Cmethod%3A%20%27POST%27%2Cbody%3A%20form}).then(res%20=%3E%20{if(!res.ok)%20cb(%27Could%20not%20unassign%27);return%20cb(null%2C%20true)}).catch(err%20=%3E%20cb(err));}self.unassignAll%20=%20()%20=%3E%20{self.assignments.forEach(a%20=%3E%20a.unassign());};self.reassignAll%20=%20()%20=%3E%20{self.assignments.forEach(a%20=%3E%20a.reassign());};return%20self;}var%20gb%20=%20new%20Gradebook();" 
-		>
-			TFK Gradebook Fix</a></h4>
-		<p>
-			Exposes a global <code>gb</code> object to easily unassing and reassign all or individual assignments in Time for Kids. Usage: <code>gb.assignments[i].unassign()</code>, <code>gb.assignments[i].reassign()</code>, <code>gb.unassignAll()</code> or <code>gb.reassignAll()</code>.
-		</p>
-
-
-
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:(function(){var%20host%20=%20%27http%3A//tfk-qa.time.com/%27;if(location.hostname%20===%20%27tfk-qa.time.com%27){location.href%20=%20location.href.replace(%27tfk-qa.time.com%27%2C%20%27localhost%3A3000%27);return;}var%20path%20=%20location.pathname;if((/(people.com%7Cpeopleenespanol.com%7Cew.com%7Cinstyle.com%7Cextracrispy.com%7Cmotto.time.com)/).test(location.hostname)){path%20=%20%27/%27%20%2B%20utag_data.content_id;}location.href%20=%20(host%20%2B%20location.hostname.replace(/(www%5C.%7C%5C.com)/g%2C%20%27%27)%20%2B%20path);})();" 
-		>
-			NG Reactify
-		</a></h4>
-		<p>
-			Turns any pronto-ready page into a Newsgroup Editorial Article page.
-		</p>
-
-
-
-		<br><h4><a class="btn btn-primary" 
-			href="javascript:(function(){var%20time%20=%20(/time%5C.com%5C/(%5Cd%2B)%5C/[a-zA-Z0-9]%2B[-a-zA-Z0-9]%2A/).exec(location.href);if(time)%20location.href%20=%20%27http%3A//time.com/wp-json/ti-api/v1/posts/%27%20%2B%20time[1]%20%2B%20%27?_embed%27;var%20fortune%20=%20(/fortune%5C.com%5C/%5Cd%2B%5C/%5Cd%2B%5C/%5Cd%2B%5C/([a-zA-Z0-9]%2B[-a-zA-Z0-9]%2A)/).exec(location.href);if(fortune)%20location.href%20=%20%27http%3A//fortune.com/wp-json/ti-api/v1/posts/%27%20%2B%20fortune[1]%20%2B%20%27?_embed%27;if((/(realsimple.com%7Ctravelandleisure.com%7Ccoastalliving.com%7Chealth.com%7Cfoodandwine.com%7Csouthernliving.com%7Ccookinglight.com%7Csunset.com%7Cessence.com)/).test(location.hostname)){location.href%20%2B=%20%27/pronto-json%27;}if((/(si.com)/).test(location.hostname)){location.href%20=%20%27https%3A//time%3Azdne37cdmf4j%40content.api.si.com/v2/documents?format=pronto%26path=%27%20%2B%20location.pathname;}if((/(ew.com%7Cpeople.com%7Cpeopleenespanol.com)/).test(location.hostname)){location.href%20=%20%27http%3A//%27%20%2B%20location.hostname%20%2B%20%27/wp-json/pronto/v1/posts/%27%20%2B%20utag_data.content_id;}if((/(instyle.com)/).test(location.hostname)){location.href%20=%20%27http%3A//www.instyle.com/node/%27%20%2B%20utag_data.content_id%20%2B%20%27/pronto-json%27;}if((/(extracrispy.com)/).test(location.hostname)){location.href%20=%20%27http%3A//time.com/api/v2/extra-crispy/article/%27%20%2B%20utag_data.content_id;}if((/(motto.time.com)/).test(location.hostname)){location.href%20=%20%27http%3A//time.com/api/v2/post/%27%20%2B%20utag_data.content_id;}if(location.hostname%20===%20%27localhost%27)%20location.href%20=%20(%27http%3A//localhost%3A3000/api/posts%27%20%2B%20location.pathname).replace(/%5C/%24/%2C%20%27%27);if(location.hostname%20===%20%27tfk-qa.time.com%27)%20location.href%20=%20(%27http%3A//tfk-qa.time.com/api/posts%27%20%2B%20location.pathname).replace(/%5C/%24/%2C%20%27%27);})();" 
-		>
-			NG Endpoint</a></h4>
-		<p>
-			Shows the current Newsgroup page's API endpoint used to reder it.
-		</p>
 
 
 	</div>
